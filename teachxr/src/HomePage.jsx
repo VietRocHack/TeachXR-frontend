@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Background from './assets/homepage.jpg'
-import { Box } from '@material-ui/core'
-import { Col, Container } from "react-bootstrap"
-import TrackVisibility from 'react-on-screen'
-
 import { useNavigate } from 'react-router-dom'
 
 function Homepage() {
@@ -12,7 +8,7 @@ function Homepage() {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Touch", "Sound", "See" ];
+  const toRotate = [ "Touch", "Sound", "Vision", "Senses" ];
   const period = 2000;
 
   useEffect(() => {
@@ -67,28 +63,26 @@ function Homepage() {
           className="w-[211px] h-[56px] py-3 px-4 text-lg font-bold bg-black text-white rounded-full border border-gray-100 shadow-xl duration-300 ease-in-out"
           style={{
             position: 'absolute',
-            right: '150px',   // Adjust the margin from the right
-            bottom: '80px',  // Adjust the margin from the bottom
+            right: '150px',   
+            bottom: '80px',  
           }}
         >
           Start Learning
         </button>
-        <Container className="mt-8">
-          <Col>
-            <TrackVisibility>
-              {({ isVisible }) => 
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                  <h1 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "300" }}>{`Power learning by`}</h1>
-                  <h2>
-                    <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Touch", "Sound", "Vision" ]'>
-                      <span className="wrap" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "800" }}>{text}</span>
-                    </span>
-                  </h2>
-                </div>
-              }
-            </TrackVisibility>
-          </Col>
-        </Container>
+    
+        <div className="container mx-auto mt-16 text-center">
+          <h1 className="text-6xl font-bold mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            TeachXR
+          </h1>
+          <div className="flex items-center justify-center">
+            <h2 className="text-lg font-light mr-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              Power learning by
+            </h2>
+            <h3 className="text-3xl font-extrabold text-purple-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              {text}
+            </h3>
+          </div>
+        </div>
     </div>
   );
 }
