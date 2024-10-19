@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import NavigationBar from "./components/NavigationBar";
 import Vapi from "@vapi-ai/web";
 import { VAPI_KEY } from "./utils";
-// import ChatBot from "./ChatBot"
 
 const Learn = () => {
   const [vapi, setVapi] = useState(null);
@@ -32,7 +31,7 @@ const Learn = () => {
     //     return;
     //   }
     //   console.log("Starting call inline");
-      vapi.start(assistantOptions);   //from the website
+    vapi.start(assistantOptions); //from the website
   };
 
   const endCall = () => {
@@ -176,6 +175,16 @@ const Learn = () => {
       <div className="w-1/3 flex items-center justify-center bg-black">
         <div className="bg-purple-700 text-white py-4 px-6 rounded-lg">
           <p>ChatBot will be here</p>
+          <div>
+            {chatHistory.length > 0
+              ? chatHistory.map((entry, index) => (
+                  <div key={index}>
+                    <strong>{entry.timestamp}</strong> [{entry.role}]:{" "}
+                    {entry.text}
+                  </div>
+                ))
+              : "No transcript available"}
+          </div>
         </div>
       </div>
     </div>
