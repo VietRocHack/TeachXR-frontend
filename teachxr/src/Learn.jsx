@@ -34,48 +34,48 @@ const Learn = () => {
     vapi.stop();
   };
 
-//   const assistantOptions = {
-//     name: "Teach XR",
-//     firstMessage:
-//       "Hi, this is Teach XR. Let me know if you have any questions while you're reading!",
-//     transcriber: {
-//       provider: "deepgram",
-//       model: "nova-2",
-//       language: "en-US",
-//     },
-//     voice: {
-//       provider: "playht",
-//       voiceId: "jennifer",
-//     },
-//     model: {
-//       // provider: "groq",
-//       // model: "llama-3.1-70b-versatile",
-//       provider: "openai",
-//       model: "gpt-3.5-turbo",
-//       messages: [
-//         {
-//           role: "system",
-//           content: `You’re a teacher who helps readers understand concepts, gives more context, or uses simple analogies to make things clearer for your students reading a book.
-      
-//       Most of the time, students will share a paragraph or a few pages from the book. Your job is to explain a specific part, summarize the whole thing, provide an analogy, or use any other method that helps them grasp the material better.
-      
-//       It’s important to keep the context of previous questions in mind so you can connect different parts of the book and deliver a smooth, cohesive answer.
-      
-//       Use casual language—phrases like "Umm...", "Well...", or "I mean" are great. Adding some humor or a light-hearted tone would also be appreciated.`,
-//         },
-//       ],
-//     },
-//     speechConfig: {
-//         startSpeakingPlan: {
-//           waitTimeBeforeSpeaking: 0.6, // Increased from default 0.4 seconds
-//           smartEndpointing: true, // Enable advanced processing for detecting when customer finishes speaking
-//           transcriptionBasedDetection: {
-//             // Add custom rules for determining when the customer has stopped speaking
-//             // For example, you could add specific phrases or patterns here
-//           },
-//         },
-//     }
-//   };
+  //   const assistantOptions = {
+  //     name: "Teach XR",
+  //     firstMessage:
+  //       "Hi, this is Teach XR. Let me know if you have any questions while you're reading!",
+  //     transcriber: {
+  //       provider: "deepgram",
+  //       model: "nova-2",
+  //       language: "en-US",
+  //     },
+  //     voice: {
+  //       provider: "playht",
+  //       voiceId: "jennifer",
+  //     },
+  //     model: {
+  //       // provider: "groq",
+  //       // model: "llama-3.1-70b-versatile",
+  //       provider: "openai",
+  //       model: "gpt-3.5-turbo",
+  //       messages: [
+  //         {
+  //           role: "system",
+  //           content: `You’re a teacher who helps readers understand concepts, gives more context, or uses simple analogies to make things clearer for your students reading a book.
+
+  //       Most of the time, students will share a paragraph or a few pages from the book. Your job is to explain a specific part, summarize the whole thing, provide an analogy, or use any other method that helps them grasp the material better.
+
+  //       It’s important to keep the context of previous questions in mind so you can connect different parts of the book and deliver a smooth, cohesive answer.
+
+  //       Use casual language—phrases like "Umm...", "Well...", or "I mean" are great. Adding some humor or a light-hearted tone would also be appreciated.`,
+  //         },
+  //       ],
+  //     },
+  //     speechConfig: {
+  //         startSpeakingPlan: {
+  //           waitTimeBeforeSpeaking: 0.6, // Increased from default 0.4 seconds
+  //           smartEndpointing: true, // Enable advanced processing for detecting when customer finishes speaking
+  //           transcriptionBasedDetection: {
+  //             // Add custom rules for determining when the customer has stopped speaking
+  //             // For example, you could add specific phrases or patterns here
+  //           },
+  //         },
+  //     }
+  //   };
 
   useEffect(() => {
     const vapiInstance = new Vapi(VAPI_KEY);
@@ -175,23 +175,53 @@ Raindrops the size of bullets thundered on the castle windows for days on end; t
                 className="w-64 h-64 object-cover rounded-full border-4 border-white shadow-lg transition-transform hover:scale-105"
               />
             ) : (
-              <div>
-                <img
-                  src={robot1}
-                  alt="Friendly robot assistant"
-                  className="absolute left-12 w-24 transform rotate-12 transition-transform hover:scale-110 animate-bounce"
-                />
-                <img
-                  src={image}
-                  alt="AI learning concept"
-                  className="w-40 transition-transform hover:scale-105"
-                />
-                <img
-                  src={robot2}
-                  alt="Another friendly robot assistant"
-                  className="absolute top-0 right-12 w-24 transform rotate-[-12deg] transition-transform hover:scale-110 animate-spin"
-                />
-              </div>
+              <>
+                {/* <img
+                                    src={robot1}
+                                    alt="Friendly robot assistant"
+                                    className="absolute left-12 w-24 transform rotate-12 transition-transform hover:scale-110 animate-bounce"
+                                /> */}
+                <div className="relative">
+                  {/* Outermost Gradient Circle with Shadow */}
+                  <div className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 rounded-full h-64 w-64 animate-pulse shadow-[0_0_50px_15px_rgba(139,92,246,0.3)]"></div>
+
+                  {/* Additional Outer Circle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-blue-400 to-indigo-600 rounded-full h-60 w-60 animate-pulse"></div>
+                  </div>
+
+                  {/* Original Outer Gradient Circle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 rounded-full h-56 w-56 animate-pulse"></div>
+                  </div>
+
+                  {/* Additional Middle Circle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full h-52 w-52"></div>
+                  </div>
+
+                  {/* Original Middle Circle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-indigo-700 to-purple-700 rounded-full h-48 w-48"></div>
+                  </div>
+
+                  {/* Additional Inner Circle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-purple-800 to-indigo-800 rounded-full h-44 w-44 flex items-center justify-center shadow-lg"></div>
+                  </div>
+
+                  {/* Original Inner Circle with Text */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-gradient-radial from-teal-400 via-emerald-500 to-cyan-600 rounded-full h-40 w-40 flex items-center justify-center shadow-lg">
+                      <span className="text-white text-xl font-semibold"></span>
+                    </div>
+                  </div>
+                </div>
+                {/* Informative Message */}
+                <p className="text-blue-200 text-center mt-8 text-lg opacity-75">
+                  Touch to empower your learning
+                </p>
+              </>
             )}
           </div>
           <NavigationBar
