@@ -6,6 +6,7 @@ import settings from './assets/settings.png'
 
 import { useState } from "react"
 import NavigationBar from "./NavigationBar"
+import ChatBot from "./ChatBot"
 
 const Learn = () => {
     const [isVoiceMode, setIsVoiceMode] = useState(false);
@@ -56,9 +57,9 @@ const Learn = () => {
 
             {/* Right section: Placeholder for ChatBot (1/3 of the screen) */}
             <div className="w-1/3 flex items-center justify-center bg-black">
-                <div className="bg-purple-700 text-white py-4 px-6 rounded-lg">
-                <p>ChatBot will be here</p>
-                </div>
+                {/* <div className="bg-purple-700 text-white py-4 px-6 rounded-lg">
+                </div> */}
+                    <ChatBot />
             </div>
         </div>
     );
