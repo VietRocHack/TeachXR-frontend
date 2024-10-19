@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import NavigationBar from "./components/NavigationBar";
 import Vapi from "@vapi-ai/web";
 import { VAPI_KEY } from "./utils";
-import CenterButton from "./components/CenterButton";
+// import ChatBot from "./ChatBot"
 
 const Learn = () => {
   const [vapi, setVapi] = useState(null);
