@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Background from './assets/homepage.jpg'
 import { Box } from '@material-ui/core'
 import { Col, Container } from "react-bootstrap"
@@ -7,46 +7,46 @@ import TrackVisibility from 'react-on-screen'
 import { useNavigate } from 'react-router-dom'
 
 function Homepage() {
-  // const [loopNum, setLoopNum] = useState(0);
-  // const [isDeleting, setIsDeleting] = useState(false);
-  // const [text, setText] = useState('');
-  // const [delta, setDelta] = useState(300 - Math.random() * 100);
-  // const [index, setIndex] = useState(1);
-  // const toRotate = [ "Touch", "Sound", "See" ];
-  // const period = 2000;
+  const [loopNum, setLoopNum] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('');
+  const [delta, setDelta] = useState(300 - Math.random() * 100);
+  const [index, setIndex] = useState(1);
+  const toRotate = [ "Touch", "Sound", "See" ];
+  const period = 2000;
 
-  // useEffect(() => {
-  //   let ticker = setInterval(() => {
-  //     tick();
-  //   }, delta);
+  useEffect(() => {
+    let ticker = setInterval(() => {
+      tick();
+    }, delta);
 
-  //   return () => { clearInterval(ticker) };
-  // }, [text])
+    return () => { clearInterval(ticker) };
+  }, [text])
 
-  // const tick = () => {
-  //   let i = loopNum % toRotate.length;
-  //   let fullText = toRotate[i];
-  //   let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+  const tick = () => {
+    let i = loopNum % toRotate.length;
+    let fullText = toRotate[i];
+    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
 
-  //   setText(updatedText);
+    setText(updatedText);
 
-  //   if (isDeleting) {
-  //     setDelta(prevDelta => prevDelta / 2);
-  //   }
+    if (isDeleting) {
+      setDelta(prevDelta => prevDelta / 2);
+    }
 
-  //   if (!isDeleting && updatedText === fullText) {
-  //     setIsDeleting(true);
-  //     setIndex(prevIndex => prevIndex - 1);
-  //     setDelta(period);
-  //   } else if (isDeleting && updatedText === '') {
-  //     setIsDeleting(false);
-  //     setLoopNum(loopNum + 1);
-  //     setIndex(1);
-  //     setDelta(500);
-  //   } else {
-  //     setIndex(prevIndex => prevIndex + 1);
-  //   }
-  // }
+    if (!isDeleting && updatedText === fullText) {
+      setIsDeleting(true);
+      setIndex(prevIndex => prevIndex - 1);
+      setDelta(period);
+    } else if (isDeleting && updatedText === '') {
+      setIsDeleting(false);
+      setLoopNum(loopNum + 1);
+      setIndex(1);
+      setDelta(500);
+    } else {
+      setIndex(prevIndex => prevIndex + 1);
+    }
+  }
 
   const navigate = useNavigate()
   return (
@@ -58,33 +58,37 @@ function Homepage() {
         backgroundPosition: 'center 75%',  
         backgroundRepeat: 'no-repeat',  
         position: 'relative', 
-        opacity: 0.7
+        opacity: 0.8
       }}
     >
 
         <button 
-            onClick={() => navigate('/learn')}
-            className="w-[211px] h-[56px] py-3 px-4 text-lg font-bold bg-black text-white rounded-full border border-gray-100 shadow-xl duration-300 ease-in-out"
+          onClick={() => navigate('/learn')}
+          className="w-[211px] h-[56px] py-3 px-4 text-lg font-bold bg-black text-white rounded-full border border-gray-100 shadow-xl duration-300 ease-in-out"
+          style={{
+            position: 'absolute',
+            right: '150px',   // Adjust the margin from the right
+            bottom: '80px',  // Adjust the margin from the bottom
+          }}
         >
-            Start learning
+          Start Learning
         </button>
-      {/* <Container>
-        <Col>
+        <Container className="mt-8">
+          <Col>
             <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h1 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "400" }}>{`Power learning by`}</h1>
-                <h2>
-                  <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Touch", "Sound", "Vision" ]'>
-                    <span className="wrap" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "500" }}>{text}</span>
-                  </span>
-                </h2>
-              </div>
+              {({ isVisible }) => 
+                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                  <h1 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "300" }}>{`Power learning by`}</h1>
+                  <h2>
+                    <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Touch", "Sound", "Vision" ]'>
+                      <span className="wrap" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "800" }}>{text}</span>
+                    </span>
+                  </h2>
+                </div>
               }
             </TrackVisibility>
           </Col>
-
-      </Container> */}
+        </Container>
     </div>
   );
 }

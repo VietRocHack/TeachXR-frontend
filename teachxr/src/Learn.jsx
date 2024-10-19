@@ -21,7 +21,7 @@ const Learn = () => {
             <div className="w-2/3 flex items-center justify-center mt-8 mb-8">
                 <div className="flex flex-col items-center justify-center w-full h-full m-8 space-y-12">
                 
-                    <div className="flex relative items-center justify-center w-full max-w-3xl h-[600px] rounded-lg shadow-lg overflow-hidden mt-8 mb-8">
+                    <div className="flex relative items-center justify-center w-full max-w-3xl h-[600px] rounded-lg overflow-hidden mt-8 mb-8">
                         {isVoiceMode ? (
                             <img
                                 src={robot1}

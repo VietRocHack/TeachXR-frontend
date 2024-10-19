@@ -72,22 +72,6 @@ const Text = () => {
               }
             </TrackVisibility>
           </Col>
-
-          <Box sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            margin: "50px",
-          }}>
-            <Link to="/joinmeeting" style={{ textDecoration: 'none' }}>
-              <button class="button-64" role="button"><span class="text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "400" }}>I am a Student</span></button>
-            </Link>
-          
-            <Link to="/createmeeting" style={{ textDecoration: 'none' }}>
-              <button class="button-64" role="button"><span class="text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: "400" }}>I am a Teacher</span></button>
-            </Link>
-          </Box>
-
-
         </Container>
 
     </Box>
