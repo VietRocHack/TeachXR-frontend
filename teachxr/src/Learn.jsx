@@ -1,6 +1,6 @@
 import React from "react";
 import robot1 from "./assets/robot1.png";
-import robot2 from "./assets/robot2.png";
+import teacher from "./assets/teacher.png";
 import image from "./assets/image.png";
 
 import { useState, useEffect } from "react";
@@ -166,14 +166,16 @@ Raindrops the size of bullets thundered on the castle windows for days on end; t
   return (
     <div className="bg-gradient-to-b from-purple-900 to-indigo-900 min-h-screen flex">
       <div className="w-2/3 flex items-center justify-center mt-8 mb-8">
-        <div className="flex flex-col items-center justify-center w-full h-full m-8 space-y-24">
+        <div className="flex flex-col items-center justify-center w-full h-full m-8 space-y-32">
             <div className="flex flex-col relative items-center justify-center w-full max-w-3xl h-64 mt-8 mb-16">
                 {isVoiceMode ? (
-                <img
-                    src={robot1}
-                    alt="AI Assistant Avatar"
-                    className="w-64 h-64 object-cover rounded-full border-4 border-white shadow-lg transition-transform hover:scale-105"
-                />
+                    <div className="bg-purple-500 w-100 h-100 flex justify-center rounded-[15px]">
+                        <img
+                            src={teacher}
+                            alt="AI Assistant Avatar"
+                            className="w-100 h-100 transition-transform hover:scale-105 justify-center"
+                        />
+                    </div>
                 ) : (
                 <>
                     {/* <img
