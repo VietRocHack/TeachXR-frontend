@@ -1,4 +1,3 @@
-import ChatBot from './components/ChatBot';
 import HomePage from './HomePage'
 import Learn from './Learn'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

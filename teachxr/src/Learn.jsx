@@ -1,4 +1,3 @@
-import React from "react";
 import robot1 from "./assets/robot1.png";
 import robot2 from "./assets/robot2.png";
 import image from "./assets/image.png";
@@ -7,6 +6,7 @@ import { useState, useEffect } from "react";
 import NavigationBar from "./components/NavigationBar";
 import Vapi from "@vapi-ai/web";
 import { VAPI_KEY } from "./utils";
+import ChatBox from "./components/ChatBox";
 
 const Learn = () => {
   const [vapi, setVapi] = useState(null);
@@ -94,31 +94,21 @@ const Learn = () => {
       setConnected(false);
     });
 
-    // vapiInstance.on("speech-start", () => {
-    //   setAssistantIsSpeaking(true);
-    // });
-
-    // vapiInstance.on("speech-end", () => {
-    //   setAssistantIsSpeaking(false);
-    // });
-
-    // vapiInstance.on("volume-level", (level) => {
-    //   setVolumeLevel(level);
-    // });
-
     vapiInstance.on("message", (message) => {
       console.log("Message received:");
       if (message.type === "transcript" && message.transcriptType === "final") {
-        const newEntry = {
-          timestamp: message.timestamp,
-          role: message.role,
-          text: message.transcript,
-        };
-        setChatHistory((prev) => {
-          const updatedTranscripts = [...prev, newEntry];
-          // console.log('Updated transcripts:', updatedTranscripts);
-          return updatedTranscripts;
-        });
+        // const newEntry = {
+        //   timestamp: message.timestamp,
+        //   role: message.role,
+        //   text: message.transcript,
+        // };
+        const chatMessage = {
+          isFromUser: message.role === "user",
+          textMessage: message.transcript,
+          isImage: false,
+          imageSrc: null,
+        }
+        setChatHistory((prev) => [...prev, chatMessage]);
       }
     });
 
@@ -237,8 +227,8 @@ Raindrops the size of bullets thundered on the castle windows for days on end; t
       {/* Right section: Placeholder for ChatBot (1/3 of the screen) */}
       <div className="w-1/3 flex items-center justify-center bg-black">
         <div className="bg-purple-700 text-white py-4 px-6 rounded-lg">
-          <p>ChatBot will be here</p>
-          <div>
+          {/* <p>ChatBot will be here</p> */}
+          {/* <div>
             {chatHistory.length > 0
               ? chatHistory.map((entry, index) => (
                   <div key={index}>
@@ -247,7 +237,8 @@ Raindrops the size of bullets thundered on the castle windows for days on end; t
                   </div>
                 ))
               : "No transcript available"}
-          </div>
+          </div> */}
+          <ChatBox messages={chatHistory} setMessages={setChatHistory} />
         </div>
       </div>
     </div>
