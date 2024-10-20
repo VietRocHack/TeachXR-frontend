@@ -1,11 +1,11 @@
 import React from "react";
 import NavItem from "./NavItem";
 
-const Mute = ({ handleMuteToggle,isMuted }) => {
+const Mute = ({ handleMuteToggle,isMuted}) => {
   return (
     <NavItem
       icon={isMuted ? "mute" : "mic"}
-      label="Audio" // Button label
+      label={isMuted ? "Unmute" : "Mute"} // Button label
       onClick={() => handleMuteToggle()}
     />
   );

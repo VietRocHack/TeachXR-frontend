@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Background from './assets/homepage.jpg'
+// import { Box } from '@material-ui/core'
+import { Col, Container } from "react-bootstrap"
+import TrackVisibility from 'react-on-screen'
+
 import { useNavigate } from 'react-router-dom'
 
 function Homepage() {

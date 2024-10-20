@@ -18,18 +18,16 @@ const NavigationBar = ({
       <div className="bg-gray-900 rounded-full py-4 px-3 flex justify-around items-center w-full">
         <NavItem icon="home" label="Home" onClick={() => navigate('/')}/>
         <Mute
-          icon={isMuted ? "mute" : "mic"}
-          label="Audio"
           handleMuteToggle={handleMuteToggle}
           isMuted={isMuted}
-        />   
-          <CenterButton
-            startCallInline={startCallInline}
-            endCall={endCall}
-            label="Call TeachXR"
-            isMuted={isMuted}
-            connected={connected}
-          />
+        />
+        <CenterButton
+          startCallInline={startCallInline}
+          endCall={endCall}
+          label="Call TeachXR"
+          isMuted={isMuted}
+          connected={connected}
+        />
         <NavItem icon="clock" label="History" />
         <NavItem icon="user" label="Profile" />
       </div>
