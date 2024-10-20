@@ -21,7 +21,7 @@ const Learn = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [connecting, setConnecting] = useState(false);
   const [connected, setConnected] = useState(false);
-  const [isVoiceMode, setIsVoiceMode] = useState(true);
+  const [isVoiceMode, setIsVoiceMode] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
   const handleMuteToggle = () => {
@@ -37,6 +37,7 @@ const Learn = () => {
 
   const startCallInline = () => {
     // vapi.start(assistantOptions); //from the website
+    setIsVoiceMode(!isVoiceMode)
     vapi.start("4b6c564d-7931-4227-b2f3-cbafd3c263c1");
   };
 
@@ -89,13 +90,13 @@ const Learn = () => {
     <div className="bg-gradient-to-b from-purple-900 to-indigo-900 min-h-screen flex">
       <div className="w-2/3 flex items-center justify-center mt-8 mb-8">
         <div className="flex flex-col items-center justify-center w-full h-full m-8 space-y-32">
-            <div className="flex flex-col relative items-center justify-center w-full max-w-3xl h-64 mt-8 mb-16">
+            <div className="flex flex-col relative items-center justify-center w-full h-100 mt-8 mb-16">
                 {isVoiceMode ? (
-                    <div className="bg-purple-500 w-100 h-100 flex justify-center rounded-[15px]">
+                    <div className="bg-purple-500 w-full h-full flex justify-center rounded-[15px]">
                         <img
                             src={female3}
                             alt="AI Assistant Avatar"
-                            className="w-100 h-100 transition-transform hover:scale-105 justify-center"
+                            className="h-full object-contain transition-transform hover:scale-105"
                         />
                     </div>           
                 ) : (
@@ -154,7 +155,7 @@ const Learn = () => {
       </div>
 
       {/* Right section: Placeholder for ChatBot (1/3 of the screen) */}
-      <div className="w-1/3 flex items-center justify-center bg-black">
+      <div className="h-screen w-1/3 flex items-center justify-center bg-black">
         {/* <p>ChatBot will be here</p> */}
         {/* <div>
             {chatHistory.length > 0
