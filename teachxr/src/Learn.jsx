@@ -62,7 +62,7 @@ const Learn = () => {
           isImage: false,
           imageSrc: null,
         };
-        setChatHistory((prev) => [...prev, chatMessage]);
+        setChatHistory((prev) => [chatMessage, ...prev]);
       }
     });
 

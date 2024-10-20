@@ -46,18 +46,8 @@ export default function ChatBox({ messages, setMessages, vapi, connected }) {
     };
   }, []);
 
-  function setNewBotTextMessage(text) {
-    const newMessage = new ChatMessage(false, false, null, text);
-    setMessages([...messages, newMessage]);
-  }
-
-  function setNewBotImageMessage(url) {
-    const newMessage = new ChatMessage(false, true, url, null);
-    setMessages([...messages, newMessage]);
-  }
-
   function acceptNewMessage() {
-    setMessages([...messages, newMessage]);
+    setMessages([newMessage, ...messages]);
     setNewMessage(null);
     console.log(vapi, connected);
     if (vapi && connected) {
