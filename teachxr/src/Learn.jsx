@@ -90,13 +90,13 @@ const Learn = () => {
     <div className="bg-gradient-to-b from-purple-900 to-indigo-900 min-h-screen flex">
       <div className="w-2/3 flex items-center justify-center mt-8 mb-8">
         <div className="flex flex-col items-center justify-center w-full h-full m-8 space-y-32">
-            <div className="flex flex-col relative items-center justify-center w-full h-100 mt-8 mb-16">
+            <div className="flex flex-col relative items-center justify-center w-full h-100 mt-8">
                 {isVoiceMode ? (
-                    <div className="bg-purple-500 w-full h-full flex justify-center rounded-[15px]">
+                    <div className="bg-purple-500 rounded-[15px]">
                         <img
-                            src={female3}
+                            src={female2}
                             alt="AI Assistant Avatar"
-                            className="h-full object-contain transition-transform hover:scale-105"
+                            className="transition-transform"
                         />
                     </div>           
                 ) : (
