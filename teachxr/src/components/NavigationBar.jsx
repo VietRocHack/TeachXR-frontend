@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CenterButton from "./CenterButton";
-import ChatBot from "./ChatBot";
 import Mute from "./Mute";
 import NavItem from "./NavItem";
 
@@ -14,7 +13,7 @@ const NavigationBar = ({
 }) => {
   return (
     <nav className="flex justify-center w-full">
-      <div className="bg-gray-900 rounded-full py-1 px-3 flex justify-around items-center w-full max-w-3xl">
+      <div className="bg-gray-900 rounded-full py-4 px-3 flex justify-around items-center w-full">
         <NavItem icon="home" label="Home" />
         <Mute
           icon={isMuted ? "mute" : "mic"}
