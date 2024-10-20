@@ -161,7 +161,12 @@ const Learn = () => {
                 ))
               : "No transcript available"}
           </div> */}
-        <ChatBox messages={chatHistory} setMessages={setChatHistory} />
+        <ChatBox
+          messages={chatHistory}
+          setMessages={setChatHistory}
+          vapi={vapi}
+          connected={connected}
+        />
       </div>
     </div>
   );

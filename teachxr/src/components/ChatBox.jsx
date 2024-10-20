@@ -59,6 +59,7 @@ export default function ChatBox({ messages, setMessages, vapi, connected }) {
   function acceptNewMessage() {
     setMessages([...messages, newMessage]);
     setNewMessage(null);
+    console.log(vapi, connected);
     if (vapi && connected) {
       console.log("Sending new message...");
       vapi.send({
