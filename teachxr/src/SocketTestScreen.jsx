@@ -4,11 +4,13 @@ import io from 'socket.io-client';
 const SocketTestScreen = () => {
     const [message, setMessage] = useState('');
     const [response, setResponse] = useState('');
+    const [connected, setConnected] = useState(false);
 
     useEffect(() => {
         const socket = io('http://localhost:5000');
 
         socket.on('connect', () => {
+            setConnected(true);
             console.log('Connected to socket server');
         });
 
@@ -29,6 +31,7 @@ const SocketTestScreen = () => {
     return (
         <div>
             <h1>Socket Test Screen</h1>
+            <p>Connected: {connected ? 'Yes' : 'No'}</p>
             <input 
                 type="text" 
                 value={message} 
