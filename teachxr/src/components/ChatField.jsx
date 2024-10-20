@@ -24,7 +24,7 @@ export default function ChatField({ index, isFromUser, text, url }) {
               className="w-80 transition-transform hover:scale-105"
             />
           ) : (
-            <p>{text}</p> // Otherwise, render the text message
+            <p className="text-2xl">{text}</p> // Otherwise, render the text message
           )}
         </div>
       </div>

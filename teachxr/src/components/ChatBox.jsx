@@ -9,7 +9,7 @@ import ConfirmationBox from "./ConfirmationBox";
 console.log(import.meta.env.VITE_SOCKET_URL);
 const socket = io(import.meta.env.VITE_SOCKET_URL);
 
-export default function ChatBox({messages, setMessages}) {
+export default function ChatBox({ messages, setMessages }) {
   // const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState(null);
   const [isNewMessage, setIsNewMessage] = useState(false);
@@ -17,7 +17,6 @@ export default function ChatBox({messages, setMessages}) {
   useEffect(() => {
     // Listen for 'newData' event from the backend
     socket.on("newData", async (data) => {
-      
       setIsNewMessageLoading(true);
       // Call another API to get additional data
       console.log("New data received:", data);
@@ -69,27 +68,26 @@ export default function ChatBox({messages, setMessages}) {
   }
 
   return (
-    <>
-      <div className="w-full h-full flex flex-col justify-between bg-gray-900 text-white rounded-lg shadow-lg p-4 overflow-y-scroll">
-        {/* Chat History */}
-        <div className="flex-grow overflow-y-auto p-3 space-y-4">
-          {messages.map((message, index) => (
-            <ChatField
-              key={index}
-              isFromUser={message.isFromUser}
-              url={message.imageSrc}
-              text={message.textMessage}
-            ></ChatField>
-          ))}
-        </div>
-        {isNewMessage && (
-          <ConfirmationBox
-            url={newMessage.imageSrc}
-            accept={acceptNewMessage}
-            reject={rejectNewMessage}
-          />
-        )}
-        {/* Input Area
+    <div className="w-full h-screen flex flex-col justify-between bg-gray-900 text-white rounded-lg shadow-lg p-4 overflow-y-scroll">
+      {/* Chat History */}
+      <div className="flex-grow overflow-y-auto p-3 space-y-4">
+        {messages.map((message, index) => (
+          <ChatField
+            key={index}
+            isFromUser={message.isFromUser}
+            url={message.imageSrc}
+            text={message.textMessage}
+          ></ChatField>
+        ))}
+      </div>
+      {isNewMessage && (
+        <ConfirmationBox
+          url={newMessage.imageSrc}
+          accept={acceptNewMessage}
+          reject={rejectNewMessage}
+        />
+      )}
+      {/* Input Area
         <div className="flex items-center border-t border-gray-700 pt-3">
           <input
             type="text"
@@ -106,7 +104,6 @@ export default function ChatBox({messages, setMessages}) {
             <IoSend size={24} />
           </button>
         </div> */}
-      </div>
-    </>
+    </div>
   );
 }
