@@ -17,8 +17,10 @@ const Learn = () => {
   const [isMuted, setIsMuted] = useState(false);
 
   const handleMuteToggle = () => {
-    setIsMuted(!isMuted);
-    vapi.setMuted(!isMuted);
+    if (vapi) {
+      setIsMuted(!isMuted);
+      vapi.setMuted(!isMuted);
+    }
   };
 
   const toggleVoiceMode = () => {
@@ -34,49 +36,6 @@ const Learn = () => {
     vapi.stop();
   };
 
-  //   const assistantOptions = {
-  //     name: "Teach XR",
-  //     firstMessage:
-  //       "Hi, this is Teach XR. Let me know if you have any questions while you're reading!",
-  //     transcriber: {
-  //       provider: "deepgram",
-  //       model: "nova-2",
-  //       language: "en-US",
-  //     },
-  //     voice: {
-  //       provider: "playht",
-  //       voiceId: "jennifer",
-  //     },
-  //     model: {
-  //       // provider: "groq",
-  //       // model: "llama-3.1-70b-versatile",
-  //       provider: "openai",
-  //       model: "gpt-3.5-turbo",
-  //       messages: [
-  //         {
-  //           role: "system",
-  //           content: `You’re a teacher who helps readers understand concepts, gives more context, or uses simple analogies to make things clearer for your students reading a book.
-
-  //       Most of the time, students will share a paragraph or a few pages from the book. Your job is to explain a specific part, summarize the whole thing, provide an analogy, or use any other method that helps them grasp the material better.
-
-  //       It’s important to keep the context of previous questions in mind so you can connect different parts of the book and deliver a smooth, cohesive answer.
-
-  //       Use casual language—phrases like "Umm...", "Well...", or "I mean" are great. Adding some humor or a light-hearted tone would also be appreciated.`,
-  //         },
-  //       ],
-  //     },
-  //     speechConfig: {
-  //         startSpeakingPlan: {
-  //           waitTimeBeforeSpeaking: 0.6, // Increased from default 0.4 seconds
-  //           smartEndpointing: true, // Enable advanced processing for detecting when customer finishes speaking
-  //           transcriptionBasedDetection: {
-  //             // Add custom rules for determining when the customer has stopped speaking
-  //             // For example, you could add specific phrases or patterns here
-  //           },
-  //         },
-  //     }
-  //   };
-
   useEffect(() => {
     const vapiInstance = new Vapi(VAPI_KEY);
     setVapi(vapiInstance);
@@ -85,7 +44,7 @@ const Learn = () => {
 
     console.log("starting hooks");
     vapiInstance.on("call-start", () => {
-      //   setConnecting(false);
+      handleMuteToggle();
       setConnected(true);
     });
 
@@ -97,11 +56,6 @@ const Learn = () => {
     vapiInstance.on("message", (message) => {
       console.log("Message received:");
       if (message.type === "transcript" && message.transcriptType === "final") {
-        // const newEntry = {
-        //   timestamp: message.timestamp,
-        //   role: message.role,
-        //   text: message.transcript,
-        // };
         const chatMessage = {
           isFromUser: message.role === "user",
           textMessage: message.transcript,
@@ -116,9 +70,6 @@ const Learn = () => {
       console.error(error);
 
       setConnecting(false);
-      // if (isPublicKeyMissingError({ vapiError: error })) {
-      //   setShowPublicKeyInvalidMessage(true);
-      // }
     });
     return () => {
       console.log("cleanup");

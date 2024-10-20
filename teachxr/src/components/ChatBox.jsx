@@ -9,7 +9,7 @@ import ConfirmationBox from "./ConfirmationBox";
 console.log(import.meta.env.VITE_SOCKET_URL);
 const socket = io(import.meta.env.VITE_SOCKET_URL);
 
-export default function ChatBox({ messages, setMessages }) {
+export default function ChatBox({ messages, setMessages, vapi, connected }) {
   // const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState(null);
   const [isNewMessage, setIsNewMessage] = useState(false);
@@ -59,6 +59,20 @@ export default function ChatBox({ messages, setMessages }) {
   function acceptNewMessage() {
     setMessages([...messages, newMessage]);
     setNewMessage(null);
+    if (vapi && connected) {
+      console.log("Sending new message...");
+      vapi.send({
+        type: "add-message",
+        message: {
+          role: "system",
+          content: `The user might has some question about this. Here is the paragraph: "${newMessage.textMessage}".
+                    Just say "I'm ready for your questions about this pargraph"`,
+        },
+      });
+      console.log("Updated message!");
+    } else {
+      console.log("what da hell");
+    }
     setIsNewMessage(false);
   }
 
@@ -87,23 +101,6 @@ export default function ChatBox({ messages, setMessages }) {
           reject={rejectNewMessage}
         />
       )}
-      {/* Input Area
-        <div className="flex items-center border-t border-gray-700 pt-3">
-          <input
-            type="text"
-            className="w-full bg-gray-800 text-white p-2 rounded-lg mr-2"
-            placeholder="Type your message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          />
-          <button
-            className="text-blue-500 hover:text-blue-400"
-            onClick={handleSend}
-          >
-            <IoSend size={24} />
-          </button>
-        </div> */}
     </div>
   );
 }
